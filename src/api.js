@@ -1,4 +1,4 @@
-//const url = 'https://reqres.in'
+// const url = 'https://reqres.in'
 /*
 ;(async () => {
   const response = await fetch(`${url}/api/users/2`, {
