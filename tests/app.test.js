@@ -8,11 +8,11 @@ describe('Проверка импорта функций', () => {
     expect(typeof getTotal).toBe('function')
   })
   test('импорт функции nameIsValid прошел ок', () => {
-    expect(nameIsValid).toBeDefined
+    expect(nameIsValid).toBeDefined()
     expect(typeof nameIsValid).toBe('function')
   })
   test('импорт функции fullTrim прошел ок', () => {
-    expect(fullTrim).toBeDefined
+    expect(fullTrim).toBeDefined()
     expect(typeof fullTrim).toBe('function')
   })
 })
@@ -116,7 +116,7 @@ describe('тесты функции nameIsValid', () => {
   })
 })
 
-//Третья функция - последний блок тестов
+// Третья функция - последний блок тестов
 
 /**
  * Удаление пробелов из строки
@@ -148,7 +148,7 @@ describe('тесты функции fullTrim', () => {
       fullTrim(834)
     }).toThrow()
   })
-  test('6 test - передали true булевое значение ', () => {
+  test('6 test - передали true булевое значение', () => {
     expect(() => {
       fullTrim(true)
     }).toThrow()
