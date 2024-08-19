@@ -8,7 +8,7 @@ describe('Тесты создания пользователя на буксто
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        userName: 'boby',
+        userName: 'bobywn',
         password: '123Abcdef!',
       }),
     })
@@ -17,7 +17,7 @@ describe('Тесты создания пользователя на буксто
     console.log(data.username)
 
     expect(response.status).toEqual(201)
-    expect(data.username).toBe('boby')
+    expect(data.username).toBe('bobywn')
   })
 
   // второй тест
