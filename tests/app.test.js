@@ -1,23 +1,23 @@
 import { getTotal, nameIsValid, fullTrim } from '../src/app.js'
 
-//проверю что функции заимпортировались корректно
+// проверю что функции заимпортировались корректно
 
 describe('Проверка импорта функций', () => {
   test('импорт функции GetTotal прошел ок', () => {
-    expect(getTotal).toBeDefined
+    expect(getTotal).toBeDefined()
     expect(typeof getTotal).toBe('function')
   })
   test('импорт функции nameIsValid прошел ок', () => {
-    expect(nameIsValid).toBeDefined
+    expect(nameIsValid).toBeDefined()
     expect(typeof nameIsValid).toBe('function')
   })
   test('импорт функции fullTrim прошел ок', () => {
-    expect(fullTrim).toBeDefined
+    expect(fullTrim).toBeDefined()
     expect(typeof fullTrim).toBe('function')
   })
 })
 
-//Проведу тесты по функции GetTotal
+// Проведу тесты по функции GetTotal
 
 describe('тесты по функции GetTotal', () => {
   test('первый тест - передам значения 90 и 2, жду 180 в итоге', () => {
@@ -41,8 +41,8 @@ describe('тесты по функции GetTotal', () => {
   })
 })
 
-//теперь обработаю ошибки по функции GetTotal
-describe(' по функции GetTotal проверяем передачу ошибок', () => {
+// теперь обработаю ошибки по функции GetTotal
+describe('по функции GetTotal проверяем передачу ошибок', () => {
   test('передали отрицательное значение скидки', () => {
     expect(() => {
       getTotal([{ price: 2, quantity: 100 }], -10)
@@ -53,14 +53,14 @@ describe(' по функции GetTotal проверяем передачу ош
       getTotal([{ price: 2, quantity: 100 }], 100500)
     }).toThrow()
   })
-  test(' значение скидки не число', () => {
+  test('значение скидки не число', () => {
     expect(() => {
       getTotal([{ price: 2, quantity: 100 }], 'abcdef')
     }).toThrow()
   })
 })
 
-//Параметризованный тест
+// Параметризованный тест
 describe('Параметризированный тест GetTotal', () => {
   test.each([
     [{ price: 2, quantity: 100 }, 10, 180],
@@ -75,17 +75,19 @@ describe('Параметризированный тест GetTotal', () => {
     'передаем целую таблицу с разными ценами/кол-ом/скидкой',
     (item, discount, total) => {
       if (total === 'error') {
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(() => {
           getTotal([item], discount)
         }).toThrow()
       } else {
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(getTotal([item], discount)).toBe(total)
       }
     },
   )
 })
 
-//Новая функция -новые кейсы
+// Новая функция -новые кейсы
 
 /* Проверка имени пользователя
  * @param {string} name
@@ -95,28 +97,28 @@ export const nameIsValid = (name) =>
 
 describe('тесты функции nameIsValid', () => {
   test('первый тест - передали просто имя', () => {
-    const returns = nameIsValid('Кирилл')
-    expect(returns).toBeTruthy
+    const returns = nameIsValid('Kirill')
+    expect(returns).toBeTruthy()
   })
   test('второй тест - длинное имя', () => {
-    const returns = nameIsValid('Кириллллллллллллл')
-    expect(returns).toBeTruthy
+    const returns = nameIsValid('Efrosinyaasoooorrrr')
+    expect(returns).toBeTruthy()
   })
   test('третий тест - имя из 1 буквы', () => {
-    const returns = nameIsValid('К')
-    expect(returns).toBeFalsy
+    const returns = nameIsValid('R')
+    expect(returns).toBeFalsy()
   })
   test('третий тест - имя из букв и цифр', () => {
-    const returns = nameIsValid('Кир22')
-    expect(returns).toBeFalsy
+    const returns = nameIsValid('Rew123')
+    expect(returns).toBeFalsy()
   })
   test('четвертый тест -  передали не строку, а число', () => {
     const returns = nameIsValid(244)
-    expect(returns).toBeFalsy
+    expect(returns).toBeFalsy()
   })
 })
 
-//Третья функция - последний блок тестов
+// Третья функция - последний блок тестов
 
 /**
  * Удаление пробелов из строки
@@ -148,7 +150,7 @@ describe('тесты функции fullTrim', () => {
       fullTrim(834)
     }).toThrow()
   })
-  test('6 test - передали true булевое значение ', () => {
+  test('6 test - передали true булевое значение', () => {
     expect(() => {
       fullTrim(true)
     }).toThrow()
